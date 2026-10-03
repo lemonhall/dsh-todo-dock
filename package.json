@@ -1,0 +1,53 @@
+{
+  "name": "dsh-todo-dock",
+  "version": "0.1.0",
+  "description": "DSH 右侧栏的轻量待办：一行一件、勾掉即完成、可折叠已完成；本地存储，Agent 也能加/勾/删（todo_panel 工具）。",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "icon.svg"
+  ],
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "dsh-bundle",
+    "deepseek-harness",
+    "todo",
+    "tasks",
+    "checklist",
+    "sidebar"
+  ],
+  "author": "lemonhall",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lemonhall/dsh-todo-dock.git"
+  },
+  "homepage": "https://github.com/lemonhall/dsh-todo-dock#readme",
+  "bugs": {
+    "url": "https://github.com/lemonhall/dsh-todo-dock/issues"
+  },
+  "meta": {
+    "title": "待办",
+    "description": "右侧栏一个 tab：一行一件、回车就加、勾掉即完成；轻量，不做优先级和截止日期。"
+  },
+  "icon": "./icon.svg",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-sidebar-right"
+      ]
+    }
+  }
+}

@@ -1,0 +1,25 @@
+# ============================================================================
+# dsh-todo-dock —— DSH bundle patch
+# ============================================================================
+# 纯本地，不联网：待办存在 $DSH_HOME/dsh-todo-dock/state.json。
+# 刻意保持轻量：只有「文字 + 完成状态 + 创建时间」，不做优先级/截止日期/子任务/标签
+# —— 那些属于任务管理器，不属于"随手记一下"。
+#
+# 宿主半（lib/index.js）：
+#   GET/POST /dsh-todo/state  读/写
+#   + todo_panel 工具（Agent 侧：加、勾、删、清已完成、看清单）
+# 客户端半（lib/client.js）是右侧栏 tab：输入框 + 清单 + 已完成折叠。
+#
+# 安装：
+#   plugin_manager install_bundle  target=link:E:\development\dsh-todo-dock
+# ⚠️ 客户端半边改动要重启应用；新增宿主路由也要重启（实测）。
+# ============================================================================
+
+- insert:
+    - id: dsh-todo-dock
+      name: dsh-todo-dock
+      config:
+        # 已完成的是否默认折叠
+        collapseDone: true
+        # 清单最多保留多少条已完成（防止无限增长）；0 = 不清理
+        keepDone: 200
